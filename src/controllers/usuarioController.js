@@ -6,7 +6,9 @@ const registrar = async (req, res) => {
     //Evitar registros duplicados 
     const { email } = req.body;
     const existeUsuario = await usuarioWango.findOne({ email });
-    if(existeUsuario) {
+    const { NoIdentificacion } = req.body;
+    const existeUsuarioID = await usuarioWango.findOne({ NoIdentificacion });
+    if(existeUsuario || existeUsuarioID) {
         const error = new Error("Usuario ya registrado");
         return res.status(400).json({ msg: error.message });
     }
