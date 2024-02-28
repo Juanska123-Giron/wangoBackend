@@ -92,11 +92,11 @@ const comprobarToken = async (req, res) => {
     //params para métodos GET
     const { token } = req.params;
     const tokenValido = await usuarioWango.findOne({ token });
-    if(!tokenValido){
+    if(tokenValido){
         console.log("Token valido");
         res.json({ msg: "Token valido, el usuario existe" });
     }else{
-        const error = new Error("Token no valido");
+        const error = new Error("Token no valido - Comprobar Token");
         return res.status(404).json({ msg: error.message });
     }
 };
@@ -128,8 +128,8 @@ const perfil = async (req, res) => {
 
 const obtenerPerfil = async (req, res) => {
     try {
-        const { id } = req.params;
-        const usuario = await usuarioWango.findOne( id );
+        const { id }  = req.params;
+        const usuario = await usuarioWango.findById( id );
         if(!usuario){
             const error = new Error("Usuario no encontrado");
             return res.status(404).json({ msg: error.message });
