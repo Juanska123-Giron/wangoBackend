@@ -5,6 +5,7 @@ const dotenv = require('dotenv');
 const { mongoose } = require('mongoose');
 const { conectarDB } = require('../config/db');
 const usuarioRoutes = require("./routes/usuarioRoutes");
+const cultivoRoutes = require("./routes/cultivoRoutes");
 
 const app = express();
 
@@ -23,6 +24,7 @@ dotenv.config();
 conectarDB();
 //Crear el routing
 app.use("/api/usuarios", usuarioRoutes);
+app.use("/api/cultivos", cultivoRoutes);
 
 const PORT = process.env.PORT || 3230;
 app.listen(PORT, ()=>{
