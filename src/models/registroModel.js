@@ -1,27 +1,31 @@
 const mongoose = require('mongoose');
-const cultivoWangoSchema = mongoose.Schema({
-    nombreCultivo:{
-        type: String,
-        required: true,
-        trim: true,
-        unique: true,
-    },
-    areaCultivo: {
+const registroWangoSchema = mongoose.Schema({
+    fechaRegistro: {
         type: String,
         required: true,
         trim: true,
     },
-    latitudCultivo: {
+    eto_mm_dia: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    kc: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    etc_mm_dia: {
         type: String,
         required: true,
         trim: true,
     },
-    longitudCultivo: {
+    rendimientoKgDia: {
         type: String,
         required: true,
-        trim: true,
+        trim: true
     },
-    estadoRecoleccionDatos: {
+    CantAR_QuimicosKgDia: {
         type: String,
         required: true,
         trim: true,
@@ -29,10 +33,14 @@ const cultivoWangoSchema = mongoose.Schema({
     lote: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Lote'
+    },
+    cultivo: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Cultivo'
     }
 },{
     timestamps: true
 });
 
-const cultivoWango = mongoose.model("Cultivo", cultivoWangoSchema);
-module.exports = cultivoWango;
+const registroWango = mongoose.model("Registro", registroWangoSchema);
+module.exports = registroWango;
