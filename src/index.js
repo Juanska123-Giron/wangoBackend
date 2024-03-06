@@ -6,6 +6,8 @@ const { mongoose } = require('mongoose');
 const { conectarDB } = require('../config/db');
 const usuarioRoutes = require("./routes/usuarioRoutes");
 const cultivoRoutes = require("./routes/cultivoRoutes");
+const loteRoutes = require("./routes/loteRoutes");
+const registroRoutes = require("./routes/registroRoutes");
 
 const app = express();
 
@@ -25,6 +27,8 @@ conectarDB();
 //Crear el routing
 app.use("/api/usuarios", usuarioRoutes);
 app.use("/api/cultivos", cultivoRoutes);
+app.use("/api/lotes", loteRoutes);
+app.use("/api/registros", registroRoutes);
 
 const PORT = process.env.PORT || 3230;
 app.listen(PORT, ()=>{
